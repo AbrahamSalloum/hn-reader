@@ -1,0 +1,134 @@
+.container {
+  display: flex;
+}
+
+.container > div {
+  margin: 10px;
+  border: 1px black solid;
+  background-color:rgb(192, 196, 199)
+}
+
+body {
+  background-color:rgb(176, 190, 204)
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.storylist {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-height: 1100px;
+  margin: 10px;
+}
+
+.story {
+  border: 1px black solid;
+  background-color: rgb(231, 145, 46);
+  margin: 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content:space-between;
+}
+
+.story_wrapper {
+  margin: 0px;
+}
+
+.storyData {
+  display: flex;
+  justify-content:space-between;
+  background-color:rgb(211, 162, 107);
+  margin: 10px;
+}
+
+.topinfo {
+  background-color: rgb(198, 206, 206);
+  padding: 0px;
+  margin: 0px;
+  padding: 2px;
+  margin: 0px 0px 1px 1px;
+}
+
+.bottominfo {
+  background-color: rgb(198, 206, 206);
+  display: flex;
+  justify-content:space-between;
+  padding: 2px;
+  margin: 0px 0px 1px 1px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  justify-content:space-between;
+  height: 30px;
+  align-items:stretch;
+}
+
+.buttonlist {
+  display: flex;
+}
+
+.buttondiv.butts > * {
+  height: 100%;
+
+}
+
+.buttondiv.logo {
+  white-space: nowrap;
+  overflow: hidden;
+  align-self:center
+}
+
+.story_content_wrapper {
+  background-color: rgb(151, 197, 197);
+  border: 1px black solid;
+  padding: 10px;
+  margin: 10px;
+}
+
+.commentbox {
+  margin: 10px;
+  justify-content: left;
+  border: 1px black solid;
+  background-color: rgb(210, 218, 218);
+  margin: 10px;
+}
+
+.commenttext {
+  margin: 10px;
+}
+
+.story_content {
+  margin: 10px;
+  justify-content: left;
+  border: 1px black solid;
+  background-color: rgb(187, 179, 110);
+  width: 70%
+}
+
+.commentPos {
+  margin-left: 2%;
+}
+
+.infotext > div {
+  margin-left: 5px;
+  border: 1px #adaec0 inset;
+  padding: 1px;
+}
+
+.infotext {
+  display: flex;
+  margin-left: 5px;
+}
+
+button {
+  border-radius: 0px;
+}
