@@ -38,6 +38,7 @@ table, th, td {
 
 .story_wrapper {
   margin: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .storyData {
@@ -60,7 +61,7 @@ table, th, td {
   display: flex;
   justify-content:space-between;
   padding: 2px;
-  margin: 0px 0px 1px 1px;
+  margin: 0px 0px 2px 2px;
 }
 
 .header {
@@ -81,6 +82,11 @@ table, th, td {
 
 }
 
+.togglebuttons {
+  display:flex;
+  flex-direction: row;
+}
+
 .buttondiv.logo {
   white-space: nowrap;
   overflow: hidden;
@@ -92,6 +98,7 @@ table, th, td {
   border: 1px black solid;
   padding: 10px;
   margin: 10px;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 .commentbox {
@@ -104,6 +111,16 @@ table, th, td {
 
 .commenttext {
   margin: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.rotate{
+   vertical-align:top;
+   transform:rotate(7deg);
+  -ms-transform:rotate(90deg); /* IE 9 */
+  -moz-transform:rotate(90deg); /* Firefox */
+  -webkit-transform:rotate(90deg); /* Safari and Chrome */
+  -o-transform:rotate(90deg); /* Opera */
 }
 
 .story_content {
@@ -118,15 +135,19 @@ table, th, td {
   margin-left: 2%;
 }
 
-.infotext > div {
+/* .infotext > div {
   margin-left: 5px;
   border: 1px #adaec0 inset;
   padding: 1px;
-}
+} */
 
 .infotext {
   display: flex;
+  flex-direction: row;
   margin-left: 5px;
+    margin-left: 5px;
+  border: 1px #adaec0 inset;
+  padding: 1px;
 }
 
 button {

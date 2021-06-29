@@ -1,8 +1,7 @@
 import React from 'react';
-import { FrontPage } from './features/FrontPage/FrontPage';
+import {FrontPage}  from './features/FrontPage/FrontPage';
 import { UserInfo } from './features/FrontPage/UserInfo';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-
 
 function App() {
   return(
@@ -17,7 +16,7 @@ function App() {
           <FrontPage />
         </Route>
         </Switch>
-      </Router>    
+      </Router>
     </div>
   );
 }

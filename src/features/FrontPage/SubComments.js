@@ -80,13 +80,14 @@ const SubComments = ({comments}) => {
                     <div key={c.id}>
                         <div className="commentbox" key={c.id}>
                             <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.parent) }}>
-                                <div className="infotext">Parent: {c.parent}</div>
+                                <div><div className="infotext">Parent: {c.parent}</div></div>
                             </div>
                             <div className="commenttext" dangerouslySetInnerHTML={createMarkup(c.text)} />
                             <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.id) }}>
                                 <div className="infotext">
                                     <div>ID: {c.id}</div>
-                                    <div>By: <Link to={`/user/${c.by}`}>{c.by}</Link> Time: {moment(c.time * 1000).fromNow()}</div>
+                                    <div className="infotext">By: <Link to={`/user/${c.by}`}>{c.by}</Link> </div>
+                                    <div className="infotext">Time: {moment(c.time * 1000).fromNow()}</div>
                                 </div>
                                 <div className="infotext">
                                  <div><button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {RenderKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button></div>

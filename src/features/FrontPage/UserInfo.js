@@ -10,7 +10,6 @@ export const UserInfo  = () => {
     const [userInfo, setUserInfo] = useState({})
 
     const getUserData = async (username) => {
-        console.log('username', username)
         const url = `https://hacker-news.firebaseio.com/v0/user/${username}.json`
         const getuser = await fetch(url)
         const userdata = await getuser.json()
