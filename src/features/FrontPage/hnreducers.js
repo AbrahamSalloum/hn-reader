@@ -57,6 +57,9 @@ export const counterSlice = createSlice({
   reducers: {
     setCurrStoryv: (state, action) => {
       state.currstory = action.payload;
+    },
+    settop: (state, action) => {
+      state.top = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -78,7 +81,7 @@ export const counterSlice = createSlice({
   }
 })
 
-export const { setCurrStoryv } = counterSlice.actions;
+export const { setCurrStoryv, settop } = counterSlice.actions;
 
 export const selectCount = (state) => state.counter.value;
 export const selectTop100 = (state) => state.counter.top;

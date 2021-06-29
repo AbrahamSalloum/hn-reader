@@ -40,7 +40,7 @@ export const UserInfo  = () => {
                     </tbody>
                 </table>
             </div>
-            <div style={{ "width": "100%"}}>
+            <div>
             {
                 userInfo.submitted.map((id) => {
                     return (

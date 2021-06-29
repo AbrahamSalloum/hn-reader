@@ -5,7 +5,7 @@ import './hn-k.css'
 
 
  const stringToColour =  (stri) => {
-     const str = stri.toString()
+    const str = stri.toString()
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
         hash = str.charCodeAt(i) + ((hash << 5) - hash);
@@ -35,7 +35,7 @@ const SubComments = ({comments}) => {
         return {__html: t};
     }
 
-    const RenderKids = (kids, id) => {
+    const setKids = (kids, id) => {
         ButtonClicked[id] = id
         setButtonClicked(ButtonClicked)
         const k = {}
@@ -71,9 +71,10 @@ const SubComments = ({comments}) => {
         getsubComments(comments)
     }, [comments])
 
-    while(!!comments === false) return "No Comment.."
+    while(!!comments === false) return "No Comments"
+
     return(
-        <div>
+        <>
         {
             scomments.map((c) => {
                 return(
@@ -90,7 +91,9 @@ const SubComments = ({comments}) => {
                                     <div className="infotext">Time: {moment(c.time * 1000).fromNow()}</div>
                                 </div>
                                 <div className="infotext">
-                                 <div><button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {RenderKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button></div>
+                                    <div>
+                                        <button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {setKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -99,10 +102,9 @@ const SubComments = ({comments}) => {
                     </div>
                 </div>
                 )
-
-        })
-    }
-        </div>
+            })
+        }
+        </>
     )
 
 }

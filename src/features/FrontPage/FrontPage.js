@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import StoryPage from './storypage.js'
+import SearchSuggest from './hnsearch.js'
 import './hn-k.css'
 import { getcurrstory, listpending, setCurrStory} from './hnreducers';
 import StoryListA from './StoryList.js';
@@ -22,25 +23,23 @@ export const FrontPage = () => {
   }, [islistpending, dispatch, cat])
 
 
-return (
-<div>
-  <div className="togglebuttons">
+  return(
+  <div>
+    <div className="togglebuttons">
       <div>
         <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
       </div>
       <div>
         <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story List"}</button>
       </div>
-  </div>
+      <div>
+          <SearchSuggest />
+      </div>
+    </div>
   <div className="container">
     {listishidden ? null : <StoryListA cat={cat} />}
-    {
-    storyishidden ? null :
-      <div style={{"width": "100%"}}>
-        <StoryPage id={currstory} />
-      </div>
-    }
+    {storyishidden ? null : <div style={{ "width": "100%", "overflow": "auto", "height": "1200px" }}> <StoryPage id={currstory} /></div>}
   </div>
 </div>
-  );
+);
 }
