@@ -19,9 +19,13 @@ const StoryList = ({cat}) => {
   const [clist, setClist] = useState(cat)
   const [top_info, set_top_info] = useState({})
 
-  const isItemLoaded = (index) => {
-    return !!itemStatusMap[index]
-  }
+  const isItemLoaded = (id) => {
+    console.log(!!itemStatusMap[id])
+    console.log(top_info[id])
+    if (!!itemStatusMap[id])
+      if (!!top_info[id]) return true
+    return false
+}
 
 
   const loadMoreItems = async (startIndex, stopIndex) => {
@@ -81,7 +85,7 @@ const StoryList = ({cat}) => {
       <div className="story_wrapper" style={style} key={top[index]} id={top[index]} onClick={() => { dispatch(setCurrentDetails(top[index])) }}>
 
         {
-          isItemLoaded(top[index]) ?
+          isItemLoaded(top[index]) ? (
             <div className="story">
               <div className="storyContent">
                 {top_info[top[index]].type}:
@@ -102,6 +106,8 @@ const StoryList = ({cat}) => {
                 </div>
               </div>
             </div>
+          )
+
             :
             <div className="story">
               Loading...{top[index]}
