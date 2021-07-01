@@ -18,7 +18,6 @@ const SearchSuggest = () => {
 
 
   const change = async (event) => {
-    console.log("e", event)
     Setvalue(event.target.value)
     if(!!value === ""){
       dispatch(getTopIDs("top"))
@@ -31,10 +30,10 @@ const SearchSuggest = () => {
       const result = s.map(o => o.objectID);
       dispatch(settop(result))
       }
-    }
+  }
 
   return(
-    <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
+  <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
   )
 
 }

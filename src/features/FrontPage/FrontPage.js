@@ -30,7 +30,7 @@ export const FrontPage = () => {
         <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
       </div>
       <div>
-        <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story List"}</button>
+        <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
       </div>
       <div>
           <SearchSuggest />

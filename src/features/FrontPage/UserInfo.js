@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
-export const UserInfo  = () => {
+const UserInfo  = () => {
 
     let { user } = useParams();
     const [status, setStatus] = useState("loading")
@@ -42,10 +42,10 @@ export const UserInfo  = () => {
             </div>
             <div>
             {
-                userInfo.submitted.map((id) => {
+                userInfo.submitted.map((commentid) => {
                     return (
-                        <div>
-                        {id}
+                        <div key={commentid}>
+                            {commentid}
                         </div>
                     )
                 })
@@ -55,3 +55,5 @@ export const UserInfo  = () => {
 
     )
 }
+
+export default UserInfo
