@@ -45,7 +45,5 @@ describe('storypage renders', () => {
       </Provider>
     );
     expect(await screen.findByText("Success in Reversing Dementia in Mice Sets the Stage for Human Clinical Trials")).toBeInTheDocument();
-    //screen.debug()
   })
-
 })
