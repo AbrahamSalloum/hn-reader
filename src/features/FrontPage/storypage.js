@@ -34,13 +34,13 @@ const StoryPage = ({id}) => {
         <div>
             <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id), "width": "100%" }}>
                 <div className="infotext">
-                    <div>ID: {details.id}</div>
-                    <div>Type: {details.type}</div>
-                    <div>Score: {details.score}</div>
+                    <div aria-label="storyid">ID: {details.id}</div>
+                    <div aria-label="storytype">Type: {details.type}</div>
+                    <div aria-label="storyscore">Score: {details.score}</div>
                 </div>
             </div>
             <div className="story_content_wrapper">
-                <div><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>
+                <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>
                 <a target="_blank"  rel="noreferrer" href={details.url}>{details.url}</a><br></br>
                     <div className="story_content" dangerouslySetInnerHTML={createMarkup(details.text)} />
                 </div>
