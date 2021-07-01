@@ -53,22 +53,31 @@ const SubComments = ({comments}) => {
         )
     }
 
-    const getsubComments = async (comments = []) => {
-        const vcomments = []
-        await Promise.all(
-            comments.map(async (comm) => {
-            const topcomment = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comm}.json`)
-            const topcommenttext = await topcomment.json()
-            if(!!topcommenttext){
-                vcomments.push(topcommenttext)
-            }
-            })
-        )
-        setscomments(vcomments)
+    const getsubComments = async (comments = [], signal) => {
+        try {
+            const vcomments = []
+            await Promise.all(
+                comments.map(async (comm) => {
+                    const topcomment = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comm}.json`, { signal: signal })
+                    const topcommenttext = await topcomment.json()
+                    if (!!topcommenttext) {
+                        vcomments.push(topcommenttext)
+                    }
+                })
+            )
+            setscomments(vcomments)
+        } catch(err){
+            return
+        }
     }
 
     useEffect(() => {
-        getsubComments(comments)
+        const controller = new AbortController();
+        var signal = controller.signal;
+        getsubComments(comments, signal)
+        return () => {
+            controller.abort();
+        }
     }, [comments])
 
     while(!!comments === false) return "No Comments"

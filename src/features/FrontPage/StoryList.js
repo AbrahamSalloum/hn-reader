@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './hn-k.css'
 import { selectTop100, setCurrStory, setCurrentDetails} from './hnreducers';
@@ -20,8 +20,6 @@ const StoryList = ({cat}) => {
   const [top_info, set_top_info] = useState({})
 
   const isItemLoaded = (id) => {
-    console.log(!!itemStatusMap[id])
-    console.log(top_info[id])
     if (!!itemStatusMap[id])
       if (!!top_info[id]) return true
     return false
@@ -44,12 +42,6 @@ const StoryList = ({cat}) => {
         newitemStatusMap[top[newitems[index]]] = false
         setitemStatusMap(newitemStatusMap)
         new_top_info[top[newitems[index]]] = {
-          // title: "",
-          // type: "",
-          // by: "",
-          // score: "",
-          // descendants: "",
-          // time: ""
         }
       }
 

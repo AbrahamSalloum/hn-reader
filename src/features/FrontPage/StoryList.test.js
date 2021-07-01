@@ -38,7 +38,6 @@ describe('storylist renders', () => {
         </Router>
       </Provider>
     );
-    screen.debug()
     expect(await screen.findByText(/The most precious resource is agency/)).toBeInTheDocument();
   })
 })
@@ -74,6 +73,5 @@ describe('bogus storylist renders', () => {
 
     expect(await screen.findByText(/The most precious resource is agency/)).toBeInTheDocument();
     expect(await screen.findByText("Loading...ICANTBE")).toBeInTheDocument();
-    screen.debug()
   })
 })

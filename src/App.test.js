@@ -13,6 +13,8 @@ const x = (
 
 describe('App gets past `loading..` screen', ()=> {
   test('gets past: `loadinng..`', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
     render(x);
     expect(screen.queryByText("Loading...")).toBeNull();
   })
@@ -20,6 +22,8 @@ describe('App gets past `loading..` screen', ()=> {
 
 describe('Buttons Show up', ()=> {
   test(' renders: Hide Story List', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
     render(x);
     expect(await screen.findByText("Hide Story List")).toBeInTheDocument();
     expect(await screen.findByText("Hide Story")).toBeInTheDocument();
@@ -33,6 +37,8 @@ describe('Buttons Show up', ()=> {
 
 describe('title loads', ()=> {
   test(' renders: title', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
     render(x);
     expect(await screen.findByText(/HN: \([\S]{3,5}\)/)).toBeInTheDocument();
   })
@@ -40,6 +46,8 @@ describe('title loads', ()=> {
 
 describe('A story shows up in they story page', ()=> {
   test('renders Story', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
     render(x);
     expect(await screen.findByText("Type: story")).toBeInTheDocument();
   })
@@ -47,7 +55,18 @@ describe('A story shows up in they story page', ()=> {
 
 describe('search box shows up', ()=> {
   test('renders search box', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
     render(x);
     expect(screen.getByRole("textbox")).toBeInTheDocument();
+  })
+})
+
+describe('list shows up', () => {
+  test('list shows up', async () => {
+    jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
+    jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
+    render(x)
+    expect(await screen.findAllByText(/Comments: [\d]{1,}/));
   })
 })
