@@ -6,7 +6,7 @@ import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 
-// why doesn't this work?
+
 describe('user page renders userdata', ()=> {
   test('renders userdata`', async () => {
     const history = createMemoryHistory()
@@ -20,6 +20,6 @@ describe('user page renders userdata', ()=> {
           </Router>
         </Provider>
     );
-      expect(await screen.findByText("pygar")).toBeInTheDocument();
-    })
+    expect(await screen.findByText("pygar")).toBeInTheDocument();
   })
+})

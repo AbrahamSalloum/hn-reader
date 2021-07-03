@@ -80,21 +80,27 @@ const StoryList = ({cat}) => {
           isItemLoaded(top[index]) ? (
             <div className="story">
               <div className="storyContent">
-                {top_info[top[index]].type}:
-                <b>{top_info[top[index]].title}</b>
+                <div className="storyContent_text">
+                <div>{top_info[top[index]].type}:</div>
+                <div><b>{top_info[top[index]].title}</b></div>
+                </div>
               </div>
               <div className="storyData">
-                <div>
-                  By: <Link to={`/user/${top_info[top[index]].by}`}>{top_info[top[index]].by}</Link>
+                <div className="storyContent_text">
+                  <div>By:</div>
+                  <div><Link to={`/user/${top_info[top[index]].by}`}>{top_info[top[index]].by}</Link></div>
                 </div>
-                <div>
-                  Score: {top_info[top[index]].score}
+                <div className="storyContent_text">
+                  <div>Score:</div>
+                  <div>{top_info[top[index]].score}</div>
                 </div>
-                <div>
-                  Time: {moment(top_info[top[index]].time * 1000).fromNow()}
+                <div className="storyContent_text">
+                  <div>Time:</div>
+                  <div>{moment(top_info[top[index]].time * 1000).fromNow()}</div>
                 </div>
-                <div>
-                  Comments: {top_info[top[index]].descendants}
+                <div className="storyContent_text">
+                  <div>Comments:</div>
+                  <div>{top_info[top[index]].descendants}</div>
                 </div>
               </div>
             </div>

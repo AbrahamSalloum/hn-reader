@@ -59,7 +59,9 @@ export const counterSlice = createSlice({
       state.currstory = action.payload;
     },
     settop: (state, action) => {
+      state.listpending = false;
       state.top = action.payload;
+      
     }
   },
   extraReducers: (builder) => {
@@ -68,7 +70,6 @@ export const counterSlice = createSlice({
         state.listpending = true;
       })
       .addCase(getTopIDs.fulfilled, (state, action) => {
-        state.listpending = false;
         state.top  = action.payload
       })
     .addCase(getCurrStoryDetails.pending, (state)=> {

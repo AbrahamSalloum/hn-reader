@@ -8,8 +8,6 @@ import { createStore, combineReducers} from 'redux'
 import counterReducer from './hnreducers'
 
 
-
-
 describe('storypage renders', () => {
   test('renders storyid`', async () => {
 
@@ -35,6 +33,7 @@ describe('storypage renders', () => {
 
     const history = createMemoryHistory()
     history.push("/")
+    
     render(
       <Provider store={store}>
         <Router history={history}>

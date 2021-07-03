@@ -16,10 +16,9 @@ const SearchSuggest = () => {
     return r["hits"]
   }
 
-
   const change = async (event) => {
     Setvalue(event.target.value)
-    if(!!value === ""){
+    if(!!value === false){
       dispatch(getTopIDs("top"))
     }
   };
@@ -29,12 +28,10 @@ const SearchSuggest = () => {
       const s = await getSuggestions(value)
       const result = s.map(o => o.objectID);
       dispatch(settop(result))
-      }
+    }
   }
 
-  return(
-  <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
-  )
+  return <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
 
 }
 

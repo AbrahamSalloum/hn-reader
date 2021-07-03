@@ -8,8 +8,6 @@ import { createStore, combineReducers } from 'redux'
 import counterReducer from './hnreducers'
 
 
-
-
 describe('storylist renders', () => {
   test('renders storylist`', async () => {
 

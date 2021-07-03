@@ -90,18 +90,32 @@ const SubComments = ({comments}) => {
                     <div key={c.id}>
                         <div className="commentbox" key={c.id}>
                             <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.parent) }}>
-                                <div><div className="infotext">Parent: {c.parent}</div></div>
+                                <div className="infotextcontainer">
+                                    <div className="infotext">
+                                        <div>Parent:</div>
+                                        <div>{c.parent}</div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="commenttext" dangerouslySetInnerHTML={createMarkup(c.text)} />
                             <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.id) }}>
-                                <div className="infotext">
-                                    <div>ID: {c.id}</div>
-                                    <div className="infotext">By: <Link to={`/user/${c.by}`}>{c.by}</Link> </div>
-                                    <div className="infotext">Time: {moment(c.time * 1000).fromNow()}</div>
+                                <div className="infotextcontainer">
+                                    <div className="infotext">
+                                        <div>ID: </div>
+                                        <div>{c.id}</div>
+                                    </div>
+                                    <div className="infotext">
+                                        <div>By:</div>
+                                        <div><Link to={`/user/${c.by}`}>{c.by}</Link></div> 
+                                    </div>
+                                    <div className="infotext">
+                                        <div>Time:</div>
+                                        <div>{moment(c.time * 1000).fromNow()}</div>
+                                    </div>
                                 </div>
-                                <div className="infotext">
-                                    <div>
-                                        <button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {setKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button>
+                                <div className="infotextcontainer">
+                                    <div className="infotext">
+                                        <div><button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {setKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button></div>
                                     </div>
                                 </div>
                             </div>

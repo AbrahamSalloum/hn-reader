@@ -33,10 +33,19 @@ const StoryPage = ({id}) => {
     return(
         <div>
             <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id), "width": "100%" }}>
-                <div className="infotext">
-                    <div aria-label="storyid">ID: {details.id}</div>
-                    <div aria-label="storytype">Type: {details.type}</div>
-                    <div aria-label="storyscore">Score: {details.score}</div>
+                <div className="infotextcontainer">
+                    <div className="infotext">
+                        <div>ID:</div>
+                        <div>{details.id}</div>
+                    </div>
+                    <div className="infotext">
+                        <div>Type:</div>
+                        <div>{details.type}</div>
+                    </div>
+                    <div className="infotext">
+                        <div>Score:</div>
+                        <div>{details.score}</div>
+                    </div>
                 </div>
             </div>
             <div className="story_content_wrapper">
