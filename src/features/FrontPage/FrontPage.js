@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import StoryPage from './storypage.js'
 import SearchSuggest from './hnsearch.js'
 import './hn-k.css'
-import { getcurrstory, setCurrStory} from './hnreducers';
+import { getcurrstory, setCurrStory, selectTop100} from './hnreducers';
 import StoryListA from './StoryList.js';
 import { useParams } from "react-router-dom";
 
@@ -16,7 +16,7 @@ export const FrontPage = () => {
   const currstory = useSelector(getcurrstory);
   const [listishidden, setIsHidden] = useState(false)
   const [storyishidden, setStoryishidden] = useState(false)
-
+  const top = useSelector(selectTop100);
 
   useEffect(() => {
     // if (islistpending  === false) dispatch(setCurrStory(cat))
@@ -38,7 +38,7 @@ export const FrontPage = () => {
       </div>
     </div>
   <div className="container">
-    {listishidden ? null : <StoryListA cat={cat} />}
+    {listishidden ? null : <StoryListA cat={cat} top={top}/>}
     {storyishidden ? null : <div style={{ "width": "100%", "overflow": "auto", "height": "1200px" }}> <StoryPage id={currstory} /></div>}
   </div>
 </div>

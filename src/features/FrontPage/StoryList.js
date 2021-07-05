@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './hn-k.css'
-import { selectTop100, setCurrStory, setCurrentDetails} from './hnreducers';
+import { setCurrStory, setCurrentDetails} from './hnreducers';
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -10,17 +10,17 @@ import { Link } from "react-router-dom";
 import moment from "moment"
 
 
-const StoryList = ({cat}) => {
+const StoryList = ({cat, top}) => {
 
   const history = useHistory()
   const dispatch = useDispatch();
-  const top = useSelector(selectTop100);
+
   const [itemStatusMap, setitemStatusMap] = useState({})
   const [clist, setClist] = useState(cat)
   const [top_info, set_top_info] = useState({})
 
   const isItemLoaded = (id) => {
-    if (!!itemStatusMap[id])
+    //if (!!itemStatusMap[id])
       if (!!top_info[id]) return true
     return false
 }
@@ -122,11 +122,11 @@ const StoryList = ({cat}) => {
       <div className="header">
         <div className="buttondiv logo"><b>HN: ({clist})</b></div>
         <div className="buttonlist">
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("top")); setClist("Top"); history.push('top') }}>Top (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("new")); setClist("New"); history.push('new') }}>New (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("ask")); setClist("Ask"); history.push('ask') }}>Ask (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("show")); setClist("Show"); history.push('show') }}>Show (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("jobs")); setClist("Jobs"); history.push('jobs') }}>Jobs (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("top")); setClist("Top"); history.push('top')     }}>Top (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("new")); setClist("New"); history.push('new')     }}>New (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("ask")); setClist("Ask"); history.push('ask')     }}>Ask (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("show")); setClist("Show"); history.push('show')  }}>Show (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("jobs")); setClist("Jobs"); history.push('jobs')  }}>Jobs (100)</button></div>
         </div>
       </div>
       {
@@ -136,8 +136,8 @@ const StoryList = ({cat}) => {
               isItemLoaded={isItemLoaded}
               itemCount={top.length}
               loadMoreItems={loadMoreItems}
-              minimumBatchSize={15}
-              threshold={15}
+              minimumBatchSize={3}
+              threshold={5}
             >
               {({ onItemsRendered, ref }) => (
                 <List

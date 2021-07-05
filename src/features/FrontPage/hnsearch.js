@@ -1,14 +1,18 @@
 
-import React, { useState } from 'react';
+import React, { useState, useCallback} from 'react';
 import {useDispatch } from 'react-redux';
 import { settop} from './hnreducers';
 import { useHistory } from "react-router-dom";
+import { debounce } from "lodash";
 
 const SearchSuggest = () => {
 
   const dispatch = useDispatch()
   const [value, Setvalue] = useState('')
   const history = useHistory()
+
+  // eslint-disable-next-line
+  const delayedQuery = useCallback(debounce((b) => { if (!!b === false) history.push('/') }, 1000), [])
 
   const getSuggestions = async (value) => {
     const url = `https://hn.algolia.com/api/v1/search?query=${value}&restrictSearchableAttributes=title`
@@ -17,11 +21,12 @@ const SearchSuggest = () => {
     return r["hits"]
   }
 
-  const change = async (event) => {
+
+
+  const change = (event) => {
     Setvalue(event.target.value)
-    if (!!event.target.value === false){
-      history.push('/')
-    }
+    delayedQuery(event.target.value)
+
   };
 
   const handleKeyDown = async (event) => {
@@ -33,6 +38,8 @@ const SearchSuggest = () => {
 
     }
   }
+
+
 
 
   return <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
