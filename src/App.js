@@ -13,8 +13,8 @@ function App() {
           </Route>
           <Redirect from="/" to="/top" exact/>
           <Route path="/:cat" exact>
-          <FrontPage />
-        </Route>
+            <FrontPage />
+          </Route>
         </Switch>
       </Router>
     </div>

@@ -72,6 +72,8 @@ const StoryList = ({cat}) => {
     }
   }
 
+
+
   const RenderRow = ({ index, style }) => {
     return (
       <div className="story_wrapper" style={style} key={top[index]} id={top[index]} onClick={() => { dispatch(setCurrentDetails(top[index])) }}>

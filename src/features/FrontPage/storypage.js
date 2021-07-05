@@ -29,7 +29,7 @@ const StoryPage = ({id}) => {
 
 
     while ((!!storydetailsloading === true )) return <div>loading....</div>
-
+    while ((!!details === false)) return <div>loading....</div>
     return(
         <div>
             <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id), "width": "100%" }}>

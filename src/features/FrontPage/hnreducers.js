@@ -9,7 +9,8 @@ const initialState = {
 
 export const getTopIDs = createAsyncThunk(
   'getstorylist/getTopIDs',
-  async (view) => {
+  async (view, { getState }) => {
+    const state = getState();
     const topstories = "https://hacker-news.firebaseio.com/v0/topstories.json"
     const newstories = "https://hacker-news.firebaseio.com/v0/newstories.json"
     const ask = "https://hacker-news.firebaseio.com/v0/askstories.json"
@@ -32,13 +33,29 @@ export const getTopIDs = createAsyncThunk(
       case "jobs":
         url  = jobs
         break
+      case "search":
+        if (state.counter.top.length === 0){
+          url = topstories
+          break
+        } else {
+          url = false
+          break
+        }
+
       default:
         url = topstories
     }
 
-    const response = await fetch(url);
-    const topids =  await response.json();
-    return topids
+    if(!!url === true){
+      const response = await fetch(url);
+      const topids = await response.json();
+      return topids
+    } else {
+
+      return Promise.resolve(state.counter.top);
+    }
+
+
 
 })
 
@@ -59,9 +76,9 @@ export const counterSlice = createSlice({
       state.currstory = action.payload;
     },
     settop: (state, action) => {
-      //state.listpending = false;
       state.top = action.payload;
-      
+      state.listpending = false;
+
     }
   },
   extraReducers: (builder) => {
