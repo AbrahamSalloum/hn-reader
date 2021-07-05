@@ -23,8 +23,6 @@ describe('storylist renders', () => {
     const reducers = combineReducers({ counter: counterReducer })
     const store = createStore(reducers, initialState);
 
-
-
     const history = createMemoryHistory()
     history.push("/")
     render(
@@ -54,8 +52,6 @@ describe('bogus storylist renders', () => {
 
     const reducers = combineReducers({ counter: counterReducer })
     const store = createStore(reducers, initialState);
-
-
 
     const history = createMemoryHistory()
     history.push("/")

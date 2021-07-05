@@ -14,6 +14,11 @@ describe('value is passed to search state', () => {
     jest.spyOn(HTMLElement.prototype, 'offsetHeight', 'get').mockReturnValue(1500)
     jest.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockReturnValue(500)
 
+
+    // handleKeyDown = jest.fn().mockImplementation(() => {
+    //   Promise.resolve([26531087, 22276468])
+    // })
+
     const history = createMemoryHistory()
     history.push("/")
     render(

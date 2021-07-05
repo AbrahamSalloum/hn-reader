@@ -54,8 +54,9 @@ const SubComments = ({comments}) => {
     }
 
     const getsubComments = async (comments = [], signal) => {
+        const vcomments = []
         try {
-            const vcomments = []
+
             await Promise.all(
                 comments.map(async (comm) => {
                     const topcomment = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comm}.json`, { signal: signal })
@@ -73,7 +74,7 @@ const SubComments = ({comments}) => {
 
     useEffect(() => {
         const controller = new AbortController();
-        var signal = controller.signal;
+        const signal = controller.signal;
         getsubComments(comments, signal)
         return () => {
             controller.abort();
@@ -106,7 +107,7 @@ const SubComments = ({comments}) => {
                                     </div>
                                     <div className="infotext">
                                         <div>By:</div>
-                                        <div><Link to={`/user/${c.by}`}>{c.by}</Link></div> 
+                                        <div><Link to={`/user/${c.by}`}>{c.by}</Link></div>
                                     </div>
                                     <div className="infotext">
                                         <div>Time:</div>
@@ -115,7 +116,7 @@ const SubComments = ({comments}) => {
                                 </div>
                                 <div className="infotextcontainer">
                                     <div className="infotext">
-                                        <div><button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {setKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" }  Comments</button></div>
+                                        <div><button disabled={(isButtonClicked(c)) ? true : false} onClick={() => {setKids(c.kids, c.id)}}>Expand {!!c.kids ? c.kids.length : "0" } Comments</button></div>
                                     </div>
                                 </div>
                             </div>
