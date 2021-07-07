@@ -1,6 +1,13 @@
 .container {
   display: flex;
-  min-width: 1366px;
+
+}
+
+@media only screen and (min-width: 500px) {
+  .container {
+    display: flex;
+    min-width: 1366px;
+  }
 }
 
 .container > div {
@@ -20,16 +27,22 @@ table, th, td {
 .storylist {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   min-height: 1100px;
+}
+
+@media only screen and (min-width: 500px) {
+  .storylist {
+    max-width: 500px;
+  }
 }
 
 .story {
   border: 1px black solid;
   background-color: rgb(231, 145, 46);
-  margin: 0px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   height: 100%;
   justify-content:space-between;
 }
@@ -37,6 +50,7 @@ table, th, td {
 .story_wrapper {
   margin: 0px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
 }
 
 .storyData {
@@ -65,10 +79,12 @@ table, th, td {
 .header {
   display: flex;
   flex-direction: row;
-  width: 500px;
+  /* width: 500px; */
   justify-content:space-between;
-  height: 30px;
+  height: fit-content;
   align-items:stretch;
+
+
 }
 
 .buttonlist {
@@ -76,8 +92,8 @@ table, th, td {
 }
 
 .buttondiv.butts > * {
-  height: 100%;
-
+  height: fit-content;
+  width: fit-content;
 }
 
 .togglebuttons {
@@ -86,7 +102,7 @@ table, th, td {
 }
 
 .buttondiv.logo {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   align-self:center
 }
@@ -111,14 +127,6 @@ table, th, td {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.rotate{
-   vertical-align:top;
-   transform:rotate(7deg);
-  -ms-transform:rotate(90deg); /* IE 9 */
-  -moz-transform:rotate(90deg); /* Firefox */
-  -webkit-transform:rotate(90deg); /* Safari and Chrome */
-  -o-transform:rotate(90deg); /* Opera */
-}
 
 .story_content {
   margin: 10px;
@@ -139,6 +147,13 @@ table, th, td {
   margin-left: 5px;
   border: 1px #adaec0 inset;
   padding: 1px;
+  height: fit-content;
+}
+
+@media only screen and (max-width: 500px) {
+  .infotext{
+    flex-direction: column;
+  }
 }
 
 .infotextcontainer{
@@ -156,4 +171,16 @@ button {
   display: flex;
   flex-direction: row;
   margin-left: 5px;
+
+}
+
+.storyContent_text > div {
+  overflow-wrap: break-word;
+
+}
+
+@media only screen and (max-width: 500px) {
+  .storyContent_text{
+    flex-direction: column;
+  }
 }

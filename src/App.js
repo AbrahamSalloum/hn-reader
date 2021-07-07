@@ -1,6 +1,7 @@
 import React from 'react';
 import {FrontPage}  from './features/FrontPage/FrontPage';
 import  UserInfo  from './features/FrontPage/UserInfo';
+import StoryPage from './features/FrontPage/storypage';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
           <Redirect from="/" to="/top" exact/>
           <Route path="/:cat" exact>
             <FrontPage />
+          </Route>
+          <Route path="/story/:storyid" exact>
+            <StoryPage />
           </Route>
         </Switch>
       </Router>

@@ -6,7 +6,9 @@ import './hn-k.css'
 import { getcurrstory, setCurrStory, selectTop100} from './hnreducers';
 import StoryListA from './StoryList.js';
 import { useParams } from "react-router-dom";
-
+import {
+  isMobile
+} from "react-device-detect";
 
 export const FrontPage = () => {
 
@@ -15,31 +17,31 @@ export const FrontPage = () => {
 
   const currstory = useSelector(getcurrstory);
   const [listishidden, setIsHidden] = useState(false)
-  const [storyishidden, setStoryishidden] = useState(false)
+  const [storyishidden, setStoryishidden] = useState(isMobile)
   const top = useSelector(selectTop100);
 
   useEffect(() => {
-    // if (islistpending  === false) dispatch(setCurrStory(cat))
     dispatch(setCurrStory(cat))
   }, [cat, dispatch])
-
 
   return(
   <div>
     <div className="togglebuttons">
-      <div>
-        <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
-      </div>
-      <div>
-        <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
-      </div>
+        {isMobile ? null : <div>
+          <div>
+            <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
+          </div>
+          <div>
+            <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
+          </div>
+        </div>}
       <div>
           <SearchSuggest />
       </div>
     </div>
   <div className="container">
-    {listishidden ? null : <StoryListA cat={cat} top={top}/>}
-    {storyishidden ? null : <div style={{ "width": "100%", "overflow": "auto", "height": "1200px" }}> <StoryPage id={currstory} /></div>}
+        {listishidden ? null : <StoryListA cat={cat} top={top}/>}
+       {storyishidden ? null : <StoryPage id={currstory} />}
   </div>
 </div>
 );

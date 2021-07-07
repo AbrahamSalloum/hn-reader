@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getdetails, storyloading} from './hnreducers'
+import { getdetails, storyloading, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
+import { useParams } from "react-router-dom";
+
 import './hn-k.css'
 
 const stringToColour = (stri) => {
@@ -19,14 +22,23 @@ const stringToColour = (stri) => {
     return colour + "66";
 }
 
+
+
 const StoryPage = ({id}) => {
     const details = useSelector(getdetails);
     const storydetailsloading = useSelector(storyloading);
+
+    const dispatch = useDispatch()
 
     function createMarkup(t) {
         return {__html: t};
     }
 
+    let { storyid } = useParams()
+
+    useEffect(() => {
+        dispatch(setCurrentDetails(storyid))
+    }, [storyid, dispatch])
 
     while ((!!storydetailsloading === true )) return <div>loading....</div>
     while ((!!details === false)) return <div>loading....</div>

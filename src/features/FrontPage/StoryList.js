@@ -8,7 +8,9 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import moment from "moment"
-
+import {
+  isMobile
+} from "react-device-detect";
 
 const StoryList = ({cat, top}) => {
 
@@ -72,11 +74,15 @@ const StoryList = ({cat, top}) => {
     }
   }
 
+  // history.push(`/story/${top[index]}`)
 
 
   const RenderRow = ({ index, style }) => {
     return (
-      <div className="story_wrapper" style={style} key={top[index]} id={top[index]} onClick={() => { dispatch(setCurrentDetails(top[index])) }}>
+      <div className="story_wrapper" style={style} key={top[index]} id={top[index]} onClick={() => {
+        dispatch(setCurrentDetails(top[index]))
+        if (isMobile) history.push(`/story/${top[index]}`)
+        }}>
 
         {
           isItemLoaded(top[index]) ? (
