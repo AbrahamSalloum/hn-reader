@@ -9,6 +9,7 @@ const SearchSuggest = () => {
 
   const dispatch = useDispatch()
   const [value, Setvalue] = useState('')
+  const [searchperformed, Setsearchperformed] = useState(false)
   const history = useHistory()
 
   // eslint-disable-next-line
@@ -21,26 +22,20 @@ const SearchSuggest = () => {
     return r["hits"]
   }
 
-
-
   const change = (event) => {
     Setvalue(event.target.value)
-    delayedQuery(event.target.value)
-
+    if (searchperformed) delayedQuery(event.target.value)
   };
 
   const handleKeyDown = async (event) => {
     if(event.key === "Enter"){
       const s = await getSuggestions(value)
       const result = s.map(o => o.objectID);
+      Setsearchperformed(true)
       dispatch(settop(result))
       history.push('/search')
-
     }
   }
-
-
-
 
   return <input placeholder="Story Keyword [enter]" value={value} onChange={change} onKeyDown={handleKeyDown}/>
 
