@@ -41,7 +41,7 @@ export const FrontPage = () => {
     </div>
   <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
-       {storyishidden ? null : <StoryPage id={currstory} />}
+       {storyishidden ? null : <div style={{"width": "100%"}}> <StoryPage id={currstory}/> </div>}
   </div>
 </div>
 );
