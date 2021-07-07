@@ -42,9 +42,8 @@ table, th, td {
   background-color: rgb(231, 145, 46);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  height: 100%;
   justify-content:space-between;
+  min-height: 120px;
 }
 
 .story_wrapper {
@@ -79,12 +78,9 @@ table, th, td {
 .header {
   display: flex;
   flex-direction: row;
-  /* width: 500px; */
   justify-content:space-between;
   height: fit-content;
   align-items:stretch;
-
-
 }
 
 .buttonlist {
@@ -102,7 +98,6 @@ table, th, td {
 }
 
 .buttondiv.logo {
-  /* white-space: nowrap; */
   overflow: hidden;
   align-self:center
 }
@@ -127,7 +122,6 @@ table, th, td {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
 .story_content {
   margin: 10px;
   justify-content: left;
@@ -139,7 +133,6 @@ table, th, td {
 .commentPos {
   margin-left: 2%;
 }
-
 
 .infotext {
   display: flex;

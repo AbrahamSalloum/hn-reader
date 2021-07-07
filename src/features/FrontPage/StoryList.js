@@ -148,7 +148,7 @@ const StoryList = ({cat, top}) => {
               {({ onItemsRendered, ref }) => (
                 <List
                   height={height}
-                  itemSize={100}
+                  itemSize={120}
                   itemCount={top.length}
                   onItemsRendered={onItemsRendered}
                   ref={ref}
