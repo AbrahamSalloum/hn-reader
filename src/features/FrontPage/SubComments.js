@@ -81,7 +81,7 @@ const SubComments = ({comments}) => {
         }
     }, [comments])
 
-    while(!!comments === false) return "No Comments"
+    while(!!comments === false) return "No replies..."
 
     return(
         <>

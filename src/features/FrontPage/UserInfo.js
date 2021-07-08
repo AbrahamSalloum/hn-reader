@@ -4,35 +4,36 @@ import {useParams} from "react-router-dom";
 import { Link } from "react-router-dom";
 import StoryPage from './storypage'
 import { useHistory } from "react-router-dom";
-import { setCurrStory, setCurrentDetails } from './hnreducers';
-import {
-    isMobile
-} from "react-device-detect";
+import { setCurrentDetails } from './hnreducers';
+import {isMobile} from "react-device-detect";
+
 
 const UserInfo  = () => {
     const history = useHistory()
     const dispatch = useDispatch()
-    let { user } = useParams();
-    const [status, setStatus] = useState("loading")
-    const [userInfo, setUserInfo] = useState({})
-    const [commentid , setCommentid] = useState('')
+    const { user } = useParams();
+    const [userInfo, setUserInfo] = useState('')
+    const [curr_commentid, setcommentid] = useState('')
+
     const getUserData = async (username) => {
-        const url = `https://hacker-news.firebaseio.com/v0/user/${username}.json`
-        const getuser = await fetch(url)
+        const getuser = await fetch(`https://hacker-news.firebaseio.com/v0/user/${username}.json`)
         const userdata = await getuser.json()
         setUserInfo(userdata)
-        setStatus("OK")
+        setcommentid(userdata.submitted[0])
+        dispatch(setCurrentDetails(userdata.submitted[0]))
+        return userdata
     }
 
     function createMarkup(t) {
         return {__html: t};
     }
 
-    useEffect( () => {
+    useEffect(() => {
         getUserData(user)
     }, [user])
 
-    if (status === "loading") return "Loading..."
+    while (!!userInfo === false) return "Loading..."
+
 
     return(
         <div className="container">
@@ -50,12 +51,12 @@ const UserInfo  = () => {
                 userInfo.submitted.map((commentid) => {
                     return (
                         <div key={commentid} onClick={() => {
-                            setCommentid(commentid)
+                            setcommentid(commentid)
                             dispatch(setCurrentDetails(commentid))
                             if (isMobile) history.push(`/story/${commentid}`)
 
-                        }}>
-                            <Link>{commentid}</Link>
+                        }} style={{"border": "1px solid black", "margin": "3px"}}>
+                            <Link to={"#"}>{commentid}</Link>
                         </div>
                     )
                 })
@@ -65,7 +66,7 @@ const UserInfo  = () => {
             isMobile ? null :
                 <div>
                     <div style={{"width": "100%"}}>
-                            <StoryPage id={commentid} />
+                            <StoryPage id={curr_commentid} />
                     </div>
                 </div>
             }
