@@ -9,6 +9,7 @@ import {isMobile} from "react-device-detect";
 
 
 const UserInfo  = () => {
+
     const history = useHistory()
     const dispatch = useDispatch()
     const { user } = useParams();
@@ -48,6 +49,7 @@ const UserInfo  = () => {
                         <tr><td>Created</td><td>{userInfo.created}</td></tr>
                     </tbody>
                 </table>
+                <div style={{ "height": "800px", "overflow": "scroll" }}>
             {
                 userInfo.submitted.map((commentid) => {
                     return (
@@ -62,6 +64,7 @@ const UserInfo  = () => {
                     )
                 })
             }
+                </div>
             </div>
             {
             isMobile ? null :
