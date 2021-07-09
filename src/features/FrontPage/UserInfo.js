@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback  } from 'react';
 import { useDispatch } from 'react-redux';
 import {useParams} from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -15,22 +15,23 @@ const UserInfo  = () => {
     const [userInfo, setUserInfo] = useState('')
     const [curr_commentid, setcommentid] = useState('')
 
-    const getUserData = async (username) => {
-        const getuser = await fetch(`https://hacker-news.firebaseio.com/v0/user/${username}.json`)
+
+    const handleGetUserData = useCallback(async (user) => {
+        const getuser = await fetch(`https://hacker-news.firebaseio.com/v0/user/${user}.json`)
         const userdata = await getuser.json()
         setUserInfo(userdata)
         setcommentid(userdata.submitted[0])
         dispatch(setCurrentDetails(userdata.submitted[0]))
         return userdata
-    }
+    }, [dispatch])
 
-    function createMarkup(t) {
+    const createMarkup = (t) => {
         return {__html: t};
     }
 
     useEffect(() => {
-        getUserData(user)
-    }, [user])
+        handleGetUserData(user)
+    }, [user, handleGetUserData])
 
     while (!!userInfo === false) return "Loading..."
 
