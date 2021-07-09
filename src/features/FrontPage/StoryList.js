@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './hn-k.css'
 import { setCurrStory, setCurrentDetails} from './hnreducers';
 import { FixedSizeList as List } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
@@ -8,9 +7,8 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import moment from "moment"
-import {
-  isMobile
-} from "react-device-detect";
+import { isMobile } from "react-device-detect";
+import './hn-k.css'
 
 const StoryList = ({cat, top}) => {
 
@@ -73,9 +71,6 @@ const StoryList = ({cat, top}) => {
       console.log(err)
     }
   }
-
-  // history.push(`/story/${top[index]}`)
-
 
   const RenderRow = ({ index, style }) => {
     return (

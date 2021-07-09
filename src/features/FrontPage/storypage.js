@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { getdetails, storyloading, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
 import { useParams } from "react-router-dom";
-
 import './hn-k.css'
 
 const stringToColour = (stri) => {

@@ -6,9 +6,7 @@ import './hn-k.css'
 import { getcurrstory, setCurrStory, selectTop100} from './hnreducers';
 import StoryListA from './StoryList.js';
 import { useParams } from "react-router-dom";
-import {
-  isMobile
-} from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
 export const FrontPage = () => {
 
@@ -26,23 +24,25 @@ export const FrontPage = () => {
 
   return(
   <div>
-    <div className="togglebuttons">
-        {isMobile ? null : <div>
+      <div className="togglebuttons">
+        {isMobile ? null :
+        <div className="toggles">
           <div>
             <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
           </div>
           <div>
             <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
           </div>
-        </div>}
-      <div>
+        </div>
+        }
+        <div>
           <SearchSuggest />
+        </div>
       </div>
-    </div>
-  <div className="container">
+      <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
-       {storyishidden ? null : <div style={{"width": "100%"}}> <StoryPage id={currstory}/> </div>}
+        {storyishidden ? null : <div style={{"width": "100%"}}> <StoryPage id={currstory}/> </div>}
+      </div>
   </div>
-</div>
-);
+  );
 }

@@ -36,7 +36,6 @@ table, th, td {
   }
 }
 
-
 .story {
   border: 1px black solid;
   background-color: rgb(231, 145, 46);
@@ -188,4 +187,13 @@ button {
   .storyContent_text{
     flex-direction: column;
   }
+}
+
+.toggles {
+  display: flex;
+
+}
+
+.toggles > div {
+  margin-right: 2px;
 }
