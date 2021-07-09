@@ -126,6 +126,14 @@ p {
   overflow: auto;
 }
 
+code {
+  overflow: auto;
+}
+
+pre {
+  overflow: auto;
+}
+
 .story_content {
   margin: 10px;
   justify-content: left;
