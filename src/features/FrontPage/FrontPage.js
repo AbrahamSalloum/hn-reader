@@ -22,23 +22,21 @@ export const FrontPage = () => {
     dispatch(setCurrStory(cat))
   }, [cat, dispatch])
 
+
+
+
   return(
   <div>
       <div className="togglebuttons">
         {isMobile ? null :
         <div className="toggles">
-          <div>
             <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
-          </div>
-          <div>
             <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
-          </div>
         </div>
         }
-        <div>
-          <SearchSuggest />
-        </div>
+        <SearchSuggest /> 
       </div>
+     
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
         {storyishidden ? null : <div style={{"width": "100%"}}> <StoryPage id={currstory}/> </div>}

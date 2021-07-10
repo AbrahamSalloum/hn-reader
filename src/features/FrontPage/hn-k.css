@@ -93,7 +93,7 @@ table, th, td {
 
 .togglebuttons {
   display:flex;
-  flex-direction: row;
+  
 }
 
 .buttondiv.logo {
@@ -192,8 +192,42 @@ button {
 .toggles {
   display: flex;
 
+
 }
 
-.toggles > div {
+.toggles > * {
   margin-right: 2px;
+  white-space:nowrap;
+}
+
+.txtinput{
+  border: 0
+}
+
+.mobileinput {
+  width: 100%;
+  min-height: 32px;
+}
+
+input {
+ 
+  border: 0;
+}
+
+.searchcontainer {
+  display: flex;
+}
+
+.column {
+  display: flex; 
+  width: 100%;
+  flex-direction: column;
+}
+
+.searchcontainer  > button {
+  border: 0;
+}
+
+.searchcontainer  > input {
+  border: 0
 }
