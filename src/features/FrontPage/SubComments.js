@@ -84,17 +84,17 @@ const SubComments = ({comments}) => {
     while(!!comments === false) return "No replies..."
 
     return(
-        <>
+<>
         {
             scomments.map((c) => {
                 return(
-                    <div key={c.id}>
+                    <div key={c.id} >
                         <div className="commentbox" key={c.id}>
                             <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.parent) }}>
                                 <div className="infotextcontainer">
                                     <div className="infotext">
                                         <div>Parent:</div>
-                                        <div>{c.parent}</div>
+                                        <div><Link to={`/story/${c.parent}`}  target="_blank" rel="noopener noreferrer">{c.parent}</Link></div>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,9 @@ const SubComments = ({comments}) => {
                                 <div className="infotextcontainer">
                                     <div className="infotext">
                                         <div>ID: </div>
-                                        <div>{c.id}</div>
+                                        <div>
+                                        <Link to={`/story/${c.id}`}  target="_blank" rel="noopener noreferrer">{c.id}</Link>
+                                        </div>
                                     </div>
                                     <div className="infotext">
                                         <div>By:</div>
@@ -128,9 +130,9 @@ const SubComments = ({comments}) => {
                 )
             })
         }
-        </>
-    )
-
+    </>
+        )
+    
 }
 
 export default SubComments

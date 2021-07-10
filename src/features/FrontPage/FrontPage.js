@@ -23,8 +23,6 @@ export const FrontPage = () => {
   }, [cat, dispatch])
 
 
-
-
   return(
   <div>
       <div className="togglebuttons">
@@ -39,7 +37,7 @@ export const FrontPage = () => {
      
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
-        {storyishidden ? null : <div style={{"width": "100%"}}> <StoryPage id={currstory}/> </div>}
+        {storyishidden ? null : <div className="storypage"> <StoryPage id={currstory}/> </div>}
       </div>
   </div>
   );

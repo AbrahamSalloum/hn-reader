@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getdetails, storyloading, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import './hn-k.css'
 
 const stringToColour = (stri) => {
@@ -20,8 +21,6 @@ const stringToColour = (stri) => {
 
     return colour + "66";
 }
-
-
 
 const StoryPage = ({id}) => {
     const details = useSelector(getdetails);
@@ -42,12 +41,12 @@ const StoryPage = ({id}) => {
     while ((!!storydetailsloading === true )) return <div>loading....</div>
     while ((!!details === false)) return <div>loading....</div>
     return(
-        <div>
-            <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id), "width": "100%" }}>
+        <>
+            <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id) }}>
                 <div className="infotextcontainer">
                     <div className="infotext">
                         <div>ID:</div>
-                        <div>{details.id}</div>
+                        <div> <Link to={`/story/${details.id}`}  target="_blank" rel="noopener noreferrer">{details.id}</Link></div>
                     </div>
                     <div className="infotext">
                         <div>Type:</div>
@@ -58,6 +57,7 @@ const StoryPage = ({id}) => {
                         <div>{details.score}</div>
                     </div>
                 </div>
+                
             </div>
             <div className="story_content_wrapper">
                 <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>
@@ -66,8 +66,7 @@ const StoryPage = ({id}) => {
                 </div>
 
                 <SubComments comments={details.kids} />
-        </div>
-
+        </>
     )
 }
 
