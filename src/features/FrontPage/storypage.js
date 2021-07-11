@@ -24,8 +24,6 @@ const stringToColour = (stri) => {
 
 const StoryPage = ({id}) => {
     const details = useSelector(getdetails);
-    const storydetailsloading = useSelector(storyloading);
-
     const dispatch = useDispatch()
 
     function createMarkup(t) {
@@ -38,7 +36,6 @@ const StoryPage = ({id}) => {
         dispatch(setCurrentDetails(storyid))
     }, [storyid, dispatch])
 
-    while ((!!storydetailsloading === true )) return <div>loading....</div>
     while ((!!details === false)) return <div>loading....</div>
     return(
         <>
@@ -61,7 +58,7 @@ const StoryPage = ({id}) => {
             </div>
             <div className="story_content_wrapper">
                 <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>
-                <a target="_blank"  rel="noreferrer" href={details.url}>{details.url}</a><br></br>
+                <p><a target="_blank"  rel="noreferrer" href={details.url}>{details.url}</a></p>
                     <div className="story_content" dangerouslySetInnerHTML={createMarkup(details.text)} />
                 </div>
 

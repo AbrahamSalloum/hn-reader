@@ -78,7 +78,7 @@ const SearchSuggest = () => {
         <button type="submit">Search</button>
     </div>
   </form>
-    {!!value ? <div style={{"font-family": "monospace", "padding": "5px"}}>Sort By:<Sortbydropdown /></div>: null }
+    {!!value ? <div style={{"font-family": "monospace", "padding": "5px", "font-size": "1rem"}}>Sort By:<Sortbydropdown /></div>: null }
     </div>
   
   )

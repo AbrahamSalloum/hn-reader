@@ -46,7 +46,9 @@ const UserInfo  = () => {
                         <tr><td>ID</td><td>{userInfo.id}</td></tr>
                         <tr><td>About</td><td> <div dangerouslySetInnerHTML={createMarkup(userInfo.about)} /></td></tr>
                         <tr><td>Karma</td><td>{userInfo.karma}</td></tr>
-                        <tr><td>Created</td><td>{userInfo.created}</td></tr>
+                        <tr><td>Created</td><td>
+                    {new Date(userInfo.created*1000).toLocaleDateString("en-GB", {year: "numeric", month: "long",  day: 'numeric'})}
+                       </td></tr>
                     </tbody>
                 </table>
                 <div style={{ "height": "800px", "overflow": "scroll" }}>
