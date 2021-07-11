@@ -6,7 +6,6 @@ import StoryPage from './storypage'
 import { useHistory } from "react-router-dom";
 import { setCurrentDetails } from './hnreducers';
 import {isMobile} from "react-device-detect";
-import './hn-k.css'
 
 const UserInfo  = () => {
 

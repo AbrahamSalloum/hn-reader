@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import moment from "moment"
 import { isMobile } from "react-device-detect";
-import './hn-k.css'
 
 const StoryList = ({cat, top}) => {
 

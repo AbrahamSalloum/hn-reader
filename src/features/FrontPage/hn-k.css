@@ -27,7 +27,7 @@ table, th, td {
   flex-direction: column;
   width: 100vw;
   height: 95vh;
-  max-width: 500px; 
+  max-width: 500px;
 }
 
 @media only screen and  (max-width: 1100px) {
@@ -72,7 +72,7 @@ table, th, td {
   display: flex;
   justify-content:space-between;
   padding: 2px;
-  margin: 0px 0px 2px 2px;
+  margin: 0px 0px 2px 2px;;
 }
 
 .header {
@@ -151,7 +151,7 @@ pre {
   margin-right: 5px;
   border: 1px #adaec0 inset;
   padding: 1px;
-  height: fit-content;
+  height: 100%
 }
 
 @media only screen and (max-width: 500px) {
@@ -164,6 +164,7 @@ pre {
   display: flex;
   flex-direction: row;
   margin-left: 5px;
+  height: 100%
 }
 
 button {
@@ -215,7 +216,7 @@ input {
 }
 
 .column {
-  display: flex; 
+  display: flex;
   width: 100%;
   flex-direction: column;
 }
@@ -229,7 +230,7 @@ input {
 }
 
 .storypage {
-  width: 100%; 
+  width: 100%;
   overflow: auto;
   max-height: 95vh;
 }

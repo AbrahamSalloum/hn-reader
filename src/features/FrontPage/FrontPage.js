@@ -2,7 +2,6 @@ import React, {useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import StoryPage from './storypage.js'
 import SearchSuggest from './hnsearch.js'
-import './hn-k.css'
 import { getcurrstory, setCurrStory, selectTop100} from './hnreducers';
 import StoryListA from './StoryList.js';
 import { useParams } from "react-router-dom";
@@ -34,7 +33,7 @@ export const FrontPage = () => {
           </div>
           }
         </div>
-        <div style={{"width": '100%'}}><SearchSuggest /> </div>   
+        <div style={{"width": '100%'}}><SearchSuggest /> </div>
       </div>
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}

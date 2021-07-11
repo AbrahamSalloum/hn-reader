@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { debounce } from "lodash";
 import { isMobile } from "react-device-detect";
 import classNames from 'classnames'
-import './hn-k.css'
 
 const SearchSuggest = () => {
 
@@ -66,18 +65,18 @@ const SearchSuggest = () => {
   <div className="column">
   <form  onSubmit={handleKeyDown}>
     <div className="searchcontainer">
-        <input  
+        <input
           className={inputstyles}
-          placeholder="Story Keyword" 
-          value={value} 
-          onChange={change} 
+          placeholder="Story Keyword"
+          value={value}
+          onChange={change}
         />
         <button type="submit">Search</button>
     </div>
   </form>
     {!!value ? <div style={{"fontFamily": "monospace", "padding": "5px", "fontSize": "1rem"}}>Sort By:<Sortbydropdown /></div>: null }
     </div>
-  
+
   )
 }
 

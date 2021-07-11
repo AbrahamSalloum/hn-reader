@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from "moment"
 import { Link } from "react-router-dom";
-import './hn-k.css'
 
 
 const stringToColour =  (stri) => {
@@ -84,7 +83,7 @@ const SubComments = ({comments}) => {
     while(!!comments === false) return "No replies..."
 
     return(
-<>
+    <>
         {
             scomments.map((c) => {
                 return(
@@ -113,7 +112,7 @@ const SubComments = ({comments}) => {
                                     </div>
                                     <div className="infotext">
                                         <div>Time:</div>
-                                        <div>{moment(c.time * 1000).fromNow()}</div>
+                                        <div>{moment(c.time * 1000).fromNow(true)}</div>
                                     </div>
                                 </div>
                                 <div className="infotextcontainer">
@@ -131,8 +130,7 @@ const SubComments = ({comments}) => {
             })
         }
     </>
-        )
-    
+    )
 }
 
 export default SubComments

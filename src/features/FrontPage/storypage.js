@@ -5,8 +5,6 @@ import { getdetails, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
 import { useParams, Link } from "react-router-dom";
 
-import './hn-k.css'
-
 const stringToColour = (stri) => {
     const str = stri.toString()
     let hash = 0;
@@ -54,7 +52,7 @@ const StoryPage = ({id}) => {
                         <div>{details.score}</div>
                     </div>
                 </div>
-                
+
             </div>
             <div className="story_content_wrapper">
                 <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>

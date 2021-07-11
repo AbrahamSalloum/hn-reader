@@ -3,6 +3,7 @@ import {FrontPage}  from './features/FrontPage/FrontPage';
 import  UserInfo  from './features/FrontPage/UserInfo';
 import StoryPage from './features/FrontPage/storypage';
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import './features/FrontPage/hn-k.css'
 
 function App() {
   return(
