@@ -4,7 +4,6 @@
 
 @media only screen and (min-width: 450px) {
   .container {
-   
     min-width: 1366px;
   }
 }
@@ -51,7 +50,6 @@ table, th, td {
 .story_wrapper {
   margin: 0px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* width: 100%; */
 }
 
 .storyData {
@@ -96,7 +94,6 @@ table, th, td {
 
 .togglebuttons {
   display:flex;
-  
 }
 
 .buttondiv.logo {
@@ -167,7 +164,6 @@ pre {
   display: flex;
   flex-direction: row;
   margin-left: 5px;
-    margin-left: 5px;
 }
 
 button {

@@ -25,16 +25,17 @@ export const FrontPage = () => {
 
   return(
   <div>
-      <div className="togglebuttons">
-        {isMobile ? null :
-        <div className="toggles">
-            <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
-            <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
+  <div style={{"display": 'flex', "align-items":"flex-start"}}>
+        <div className="togglebuttons">
+          {isMobile ? null :
+          <div className="toggles">
+              <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
+              <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
+          </div>
+          }
         </div>
-        }
-        <SearchSuggest /> 
+        <div><SearchSuggest /> </div>   
       </div>
-     
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
         {storyishidden ? null : <div className="storypage"> <StoryPage id={currstory}/> </div>}

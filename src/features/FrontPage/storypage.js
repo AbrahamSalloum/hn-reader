@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getdetails, storyloading, setCurrentDetails} from './hnreducers'
+import { getdetails, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
 import { useParams, Link } from "react-router-dom";
 
