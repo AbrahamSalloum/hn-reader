@@ -25,7 +25,7 @@ export const FrontPage = () => {
 
   return(
   <div>
-  <div style={{"display": 'flex', "align-items":"flex-start"}}>
+  <div style={{"display": 'flex', "alignItems":"flex-start"}}>
         <div className="togglebuttons">
           {isMobile ? null :
           <div className="toggles">
@@ -34,7 +34,7 @@ export const FrontPage = () => {
           </div>
           }
         </div>
-        <div><SearchSuggest /> </div>   
+        <div style={{"width": '100%'}}><SearchSuggest /> </div>   
       </div>
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}

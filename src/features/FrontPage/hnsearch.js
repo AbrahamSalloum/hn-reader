@@ -20,7 +20,6 @@ const SearchSuggest = () => {
 
   const getSuggestions = async (value) => {
     const url = `https://hn.algolia.com/api/v1/${sort}?query=${value}&restrictSearchableAttributes=title`
-    console.log(url)
     const getsuggestions = await fetch(url)
     const r = await getsuggestions.json()
     return r["hits"]
@@ -78,11 +77,10 @@ const SearchSuggest = () => {
         <button type="submit">Search</button>
     </div>
   </form>
-    {!!value ? <div style={{"fontFamily": "monospace", "padding": "5px", "font-size": "1rem"}}>Sort By:<Sortbydropdown /></div>: null }
+    {!!value ? <div style={{"fontFamily": "monospace", "padding": "5px", "fontSize": "1rem"}}>Sort By:<Sortbydropdown /></div>: null }
     </div>
   
   )
-
 }
 
 export default SearchSuggest
