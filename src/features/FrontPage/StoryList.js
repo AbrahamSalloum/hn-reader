@@ -20,7 +20,6 @@ const StoryList = ({cat, top}) => {
   const [top_info, set_top_info] = useState({})
 
   const isItemLoaded = (id) => {
-    //if (!!itemStatusMap[id])
       if (!!top_info[id]) return true
     return false
 }

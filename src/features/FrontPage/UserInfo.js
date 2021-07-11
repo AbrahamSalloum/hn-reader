@@ -46,9 +46,8 @@ const UserInfo  = () => {
                         <tr><td>ID</td><td>{userInfo.id}</td></tr>
                         <tr><td>About</td><td> <div dangerouslySetInnerHTML={createMarkup(userInfo.about)} /></td></tr>
                         <tr><td>Karma</td><td>{userInfo.karma}</td></tr>
-                        <tr><td>Created</td><td>
-                    {new Date(userInfo.created*1000).toLocaleDateString("en-GB", {year: "numeric", month: "long",  day: 'numeric'})}
-                       </td></tr>
+                        <tr><td>Created</td>
+                        <td>{new Date(userInfo.created*1000).toLocaleDateString("en-GB", {year: "numeric", month: "long",  day: 'numeric'})}</td></tr>
                     </tbody>
                 </table>
                 <div style={{ "height": "800px", "overflow": "scroll" }}>
@@ -59,7 +58,6 @@ const UserInfo  = () => {
                             setcommentid(commentid)
                             dispatch(setCurrentDetails(commentid))
                             if (isMobile) history.push(`/story/${commentid}`)
-
                         }} style={{"border": "1px solid black", "margin": "3px"}}>
                             <Link to={"#"}>{commentid}</Link>
                         </div>
@@ -72,7 +70,7 @@ const UserInfo  = () => {
             isMobile ? null :
                 <div>
                     <div style={{"width": "100%"}}>
-                            <StoryPage id={curr_commentid} />
+                        <StoryPage id={curr_commentid} />
                     </div>
                 </div>
             }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import './hn-k.css'
 
 
- const stringToColour =  (stri) => {
+const stringToColour =  (stri) => {
     const str = stri.toString()
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
@@ -16,7 +16,7 @@ import './hn-k.css'
         colour += ('00' + value.toString(16)).substr(-2);
     }
 
-     return colour +"66";
+    return colour +"66";
 }
 
 const SubComments = ({comments}) => {

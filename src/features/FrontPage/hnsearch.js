@@ -52,8 +52,6 @@ const SearchSuggest = () => {
     )
   }
 
-
-
   const handleSortChange = (ev) => {
     setSort(ev.target.value)
   }
