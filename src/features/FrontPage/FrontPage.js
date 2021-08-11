@@ -23,8 +23,8 @@ export const FrontPage = () => {
 
 
   return(
-  <div>
-  <div style={{"display": 'flex', "alignItems":"flex-start"}}>
+  <>
+      <div style={{"display": 'flex', "alignItems":"flex-start"}}>
         <div className="togglebuttons">
           {isMobile ? null :
           <div className="toggles">
@@ -39,6 +39,6 @@ export const FrontPage = () => {
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
         {storyishidden ? null : <div className="storypage"> <StoryPage id={currstory}/> </div>}
       </div>
-  </div>
+  </>
   );
 }

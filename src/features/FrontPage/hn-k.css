@@ -4,7 +4,18 @@
 
 @media only screen and (min-width: 450px) {
   .container {
+    width: 90%;
     min-width: 1366px;
+  }
+}
+
+.singlestory {
+  width: 100%
+}
+
+@media only screen and (min-width: 500px) {
+  .singlestory {
+    width: 70%;
   }
 }
 
@@ -230,7 +241,7 @@ input {
 }
 
 .storypage {
-  width: 100%;
+  width:100%;
   overflow: auto;
   max-height: 95vh;
 }
