@@ -75,7 +75,6 @@ table, th, td {
   padding: 0px;
   margin: 0px;
   padding: 2px;
-  margin: 0px 0px 1px 1px;
 }
 
 .bottominfo {
@@ -83,7 +82,7 @@ table, th, td {
   display: flex;
   justify-content:space-between;
   padding: 2px;
-  margin: 0px 0px 2px 2px;;
+  font-size: 10pt;
 }
 
 .header {
@@ -159,7 +158,7 @@ pre {
 .infotext {
   display: flex;
   flex-direction: row;
-  margin-right: 5px;
+  margin-right: 2px;
   border: 1px #adaec0 inset;
   padding: 1px;
   height: 100%
@@ -174,7 +173,7 @@ pre {
 .infotextcontainer{
   display: flex;
   flex-direction: row;
-  margin-left: 5px;
+  margin-left: 2px;
   height: 100%
 }
 
@@ -244,4 +243,5 @@ input {
   width:100%;
   overflow: auto;
   max-height: 95vh;
+  resize:both;
 }

@@ -37,7 +37,7 @@ const StoryPage = ({id}) => {
     while ((!!details === false)) return <div>loading....</div>
     return(
         <div style={{ "display": "flex", "flexDirection": "column", "alignItems": "center" }}>
-            <div className={!!storyid ? "singlestory" : null}>
+            <div className={!!storyid ? "singlestory" : null} style={{"width":"100%"}}>
             {!!storyid ? <div style={{padding: 5}}><Link to={"/"} target="_blank" rel="noopener noreferrer"><button>Home</button></Link></div>: null}
 
             <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id) }}>

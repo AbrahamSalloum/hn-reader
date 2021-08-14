@@ -88,8 +88,10 @@ const SubComments = ({comments}) => {
             scomments.map((c) => {
                 return(
                     <div key={c.id} >
+                    
                         <div className="commentbox" key={c.id}>
-                            <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.parent) }}>
+                        <div style={{ "backgroundColor": stringToColour(c.parent), height: 5 }}></div>
+                            <div className="bottominfo">
                                 <div className="infotextcontainer">
                                     <div className="infotext">
                                         <div>Parent:</div>
@@ -98,7 +100,7 @@ const SubComments = ({comments}) => {
                                 </div>
                             </div>
                             <div className="commenttext" dangerouslySetInnerHTML={createMarkup(c.text)} />
-                            <div className="bottominfo" style={{ "backgroundColor": stringToColour(c.id) }}>
+                            <div className="bottominfo">
                                 <div className="infotextcontainer">
                                     <div className="infotext">
                                         <div>ID: </div>
@@ -121,6 +123,7 @@ const SubComments = ({comments}) => {
                                     </div>
                                 </div>
                             </div>
+                            <div style={{ "backgroundColor": stringToColour(c.id), height: 5 }}></div>
                         </div>
                     <div>
                     <Kids id={c.id} />
