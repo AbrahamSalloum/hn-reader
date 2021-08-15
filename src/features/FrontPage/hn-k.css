@@ -248,4 +248,5 @@ input {
   overflow: auto;
   max-height: 95vh;
   resize:both;
+  min-width:500px;
 }
