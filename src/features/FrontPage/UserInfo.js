@@ -6,6 +6,7 @@ import StoryPage from './storypage'
 import { useHistory } from "react-router-dom";
 import { setCurrentDetails } from './hnreducers';
 import {isMobile} from "react-device-detect";
+import {createMarkup} from './displayutils.js'
 
 const UserInfo  = () => {
 
@@ -25,9 +26,6 @@ const UserInfo  = () => {
         return userdata
     }, [dispatch])
 
-    const createMarkup = (t) => {
-        return {__html: t};
-    }
 
     useEffect(() => {
         handleGetUserData(user)

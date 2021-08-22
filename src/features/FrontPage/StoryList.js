@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCurrStory, setCurrentDetails} from './hnreducers';
 import { FixedSizeList as List } from "react-window";
@@ -14,7 +14,6 @@ const StoryList = ({cat, top}) => {
   const history = useHistory()
   const dispatch = useDispatch();
 
-  const [itemStatusMap, setitemStatusMap] = useState({})
   const [clist, setClist] = useState(cat)
   const [top_info, set_top_info] = useState({})
 
@@ -23,31 +22,19 @@ const StoryList = ({cat, top}) => {
     return false
 }
 
-
   const loadMoreItems = async (startIndex, stopIndex) => {
     try {
       const newitems = []
       for (let i = startIndex; i < stopIndex; i++) {
-        if (!!top[i]) {
-          if (!top_info[top[i]]) {
-            newitems.push(i)
+        if (!!top[i]) { //if item is defined
+          if (!top_info[top[i]]) { // if item isnt already fetched
+            newitems.push(i) //add to newitems array
           }
         }
       }
-      const new_top_info = top_info
-      const newitemStatusMap = itemStatusMap
-      for (let index = 0; index <= newitems.length; index++) {
-        newitemStatusMap[top[newitems[index]]] = false
-        setitemStatusMap(newitemStatusMap)
-        new_top_info[top[newitems[index]]] = {
-        }
-      }
 
-      set_top_info(new_top_info)
-      setitemStatusMap(newitemStatusMap)
-
-      const urls = []
-      for (let i = 0; i < newitems.length; i++) {
+      const urls = [] 
+      for (let i = 0; i < newitems.length; i++) { // create URLs to to fetch and populate in urls
         const newitem = top[newitems[i]]
         let url = `https://hacker-news.firebaseio.com/v0/item/${newitem}.json`
         urls.push(url)
@@ -59,12 +46,13 @@ const StoryList = ({cat, top}) => {
       })
 
       await Promise.all(fetches.map(async (res, index) => {
-        const newitemStatusMap = itemStatusMap
-        newitemStatusMap[top[newitems[index]]] = top[newitems[index]]
-        setitemStatusMap(newitemStatusMap)
-        top_info[top[newitems[index]]] = await res
+        const x = await res
+        x[top[newitems[index]]] = await res
+        set_top_info((prev) => {
+          prev[top[newitems[index]]] = x
+          return prev
+        })
       }))
-
     } catch (err) {
       console.log(err)
     }
@@ -82,7 +70,7 @@ const StoryList = ({cat, top}) => {
             <div className="story">
               <div className="storyContent">
                 <div className="storyContent_text">
-                <div>{top_info[top[index]].type}:</div>
+                <div><Link to={`/story/${top[index]}`} target="_blank" rel="noopener noreferrer">{top_info[top[index]].type}</Link>:</div>
                 <div><b>{top_info[top[index]].title}</b></div>
                 </div>
               </div>
@@ -116,43 +104,50 @@ const StoryList = ({cat, top}) => {
    )
   }
 
+  const setcatlist= (t) => {
+    const title = t.charAt(0).toUpperCase() + t.slice(1)
+    dispatch(setCurrStory(t)); 
+    history.push(t)
+    setClist(title); 
+  }
+  
   return (
     <div className="storylist">
       <div className="header">
         <div className="buttondiv logo"><b>HN: ({clist})</b></div>
         <div className="buttonlist">
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("top")); setClist("Top"); history.push('top')     }}>Top (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("new")); setClist("New"); history.push('new')     }}>New (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("ask")); setClist("Ask"); history.push('ask')     }}>Ask (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("show")); setClist("Show"); history.push('show')  }}>Show (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { dispatch(setCurrStory("jobs")); setClist("Jobs"); history.push('jobs')  }}>Jobs (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('top')  }}>Top (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('new')  }}>New (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('ask')  }}>Ask (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('show') }}>Show (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('jobs') }}>Jobs (100)</button></div>
         </div>
       </div>
       {
         <AutoSizer>
-          {({ height, width }) => (
-            <InfiniteLoader
-              isItemLoaded={isItemLoaded}
-              itemCount={top.length}
-              loadMoreItems={loadMoreItems}
-              minimumBatchSize={3}
-              threshold={5}
-            >
-              {({ onItemsRendered, ref }) => (
-                <List
-                  height={height}
-                  itemSize={120}
-                  itemCount={top.length}
-                  onItemsRendered={onItemsRendered}
-                  ref={ref}
-                  width={width}
-                  overscanCount={4}
-                >
-                  {RenderRow}
-                </List>
-              )}
-            </InfiniteLoader>
-          )}
+        {({ height, width }) => (
+          <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={top.length}
+            loadMoreItems={loadMoreItems}
+            minimumBatchSize={3}
+            threshold={5}
+          >
+            {({ onItemsRendered, ref }) => (
+              <List
+                height={height}
+                itemSize={120}
+                itemCount={top.length}
+                onItemsRendered={onItemsRendered}
+                ref={ref}
+                width={width}
+                overscanCount={4}
+              >
+                {RenderRow}
+              </List>
+            )}
+          </InfiniteLoader>
+        )}
         </AutoSizer>
       }
     </div>
