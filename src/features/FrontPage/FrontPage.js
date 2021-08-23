@@ -23,22 +23,23 @@ export const FrontPage = () => {
 
 
   return(
-  <>
+    <div>
       <div style={{"display": 'flex', "alignItems":"flex-start"}}>
         <div className="togglebuttons">
-          {isMobile ? null :
-          <div className="toggles">
-              <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
-              <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
-          </div>
+          {
+            isMobile ? null :
+              <div className="toggles">
+                <button onClick={() => setIsHidden(!listishidden)}>{listishidden ? "Show Story List" : "Hide Story List"}</button>
+                <button onClick={() => setStoryishidden(!storyishidden)}>{storyishidden ? "Show Story" : "Hide Story"}</button>
+              </div>
           }
         </div>
-        <div style={{"width": '100%'}}><SearchSuggest /> </div>
+        <div style={{"width": '100%'}}><SearchSuggest /></div>
       </div>
       <div className="container">
         {listishidden ? null : <StoryListA cat={cat} top={top}/>}
         {storyishidden ? null : <div className="storypage"> <StoryPage id={currstory}/> </div>}
       </div>
-  </>
+    </div>
   );
 }

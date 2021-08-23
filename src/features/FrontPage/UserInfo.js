@@ -13,7 +13,7 @@ const UserInfo  = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const { user } = useParams();
-    const [userInfo, setUserInfo] = useState('')
+    const [userInfo, setUserInfo] = useState({id: '', about: '', karma: '', submitted: []})
     const [curr_commentid, setcommentid] = useState('')
 
 
@@ -30,9 +30,6 @@ const UserInfo  = () => {
     useEffect(() => {
         handleGetUserData(user)
     }, [user, handleGetUserData])
-
-    while (!!userInfo === false) return "Loading..."
-
 
     return(
         <div className="container">

@@ -37,7 +37,7 @@ const StoryPage = ({id}) => {
                 </div>
             </div>
             <div className="story_content_wrapper">
-                <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${id}`}>{id}</a></h3></div>
+                <div aria-label="storylink"><h3>{details.title} <a target="_blank" rel="noreferrer" href={`https://news.ycombinator.com/item?id=${details.id}`}>{details.id}</a></h3></div>
                 <p><a target="_blank"  rel="noreferrer" href={details.url}>{details.url}</a></p>
                 <div className="story_content" dangerouslySetInnerHTML={createMarkup(details.text)} />
             </div>

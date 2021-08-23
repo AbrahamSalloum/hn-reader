@@ -116,9 +116,9 @@ const StoryList = ({cat, top}) => {
       <div className="header">
         <div className="buttondiv logo"><b>HN: ({clist})</b></div>
         <div className="buttonlist">
-          <div className="buttondiv butts"><button onClick={() => { setcatlist('top')  }}>Top (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { setcatlist('new')  }}>New (100)</button></div>
-          <div className="buttondiv butts"><button onClick={() => { setcatlist('ask')  }}>Ask (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('top') }}>Top (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('new') }}>New (100)</button></div>
+          <div className="buttondiv butts"><button onClick={() => { setcatlist('ask') }}>Ask (100)</button></div>
           <div className="buttondiv butts"><button onClick={() => { setcatlist('show') }}>Show (100)</button></div>
           <div className="buttondiv butts"><button onClick={() => { setcatlist('jobs') }}>Jobs (100)</button></div>
         </div>

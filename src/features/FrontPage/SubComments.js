@@ -80,7 +80,7 @@ const SubComments = ({comments}) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="commenttext" dangerouslySetInnerHTML={createMarkup(c.text)} />
+                            <div className="commenttext" dangerouslySetInnerHTML={createMarkup(c.text)}/>
                             <div className="bottominfo">
                                 <div className="infotextcontainer">
                                     <div className="infotext">
