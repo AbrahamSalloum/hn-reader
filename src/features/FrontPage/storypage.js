@@ -5,6 +5,7 @@ import { getdetails, setCurrentDetails} from './hnreducers'
 import SubComments from './SubComments'
 import { useParams, Link } from "react-router-dom";
 import {stringToColour, createMarkup} from './displayutils.js'
+import {Helmet} from "react-helmet";
 
 const StoryPage = ({id}) => {
     const details = useSelector(getdetails);
@@ -17,7 +18,15 @@ const StoryPage = ({id}) => {
 
     while ((!!details === false)) return <div>loading....</div>
     return(
+        
         <div style={{ "display": "flex", "flexDirection": "column", "alignItems": "center" }}>
+        <Helmet>
+        <meta property="og:title" content={details.title} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:description" content={details.title} />
+        <meta property="og:type" content="article" />
+        <title> HN | {details.title}</title>
+        </Helmet>
             <div className={!!storyid ? "singlestory" : "ss"}>
             {!!storyid ? <div style={{padding: 5}}><Link to={"/"} target="_blank" rel="noopener noreferrer"><button>Home</button></Link></div>: null}
             <div className="bottominfo" style={{ "backgroundColor": stringToColour(details.id) }}>
